@@ -1,6 +1,7 @@
 # Microsoft Azure Provider
 provider "azurerm" {
   # If using a service principal, fill in details here
+  features {}
 }
 
 variable "ssh_key" {
@@ -81,7 +82,7 @@ resource "azurerm_subnet" "default" {
   name                 = "${local.subnet_name}"
   virtual_network_name = "${azurerm_virtual_network.vnet.name}"
   resource_group_name  = "${azurerm_resource_group.rg.name}"
-  address_prefix       = "${local.subnet_address_prefix}"
+  address_prefixes     = ["${local.subnet_address_prefix}"]
 }
 
 # Generate random text for a unique storage account name
