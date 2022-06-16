@@ -65,7 +65,7 @@ locals {
 resource "azurerm_resource_group" "rg" {
   name     = "${local.resource_group_name}"
   location = "${var.location}"
-  tags     = "${merge(local.tags, map("provisionedBy", "terraform"))}"
+  tags     = "${merge(local.tags, tomap({"provisionedBy": "terraform"}))}"
 }
 
 # Networking
@@ -114,7 +114,7 @@ resource "azurerm_availability_set" "machines" {
 data "template_file" "cloud_config" {
   template = "${file("${path.module}/cloud-config/${var.cloud_config}")}"
 
-  vars {
+  vars = {
     ssh_port       = "${var.ssh_port}"
     ssh_key        = "${var.ssh_key}"
     admin_username = "${var.admin_username}"

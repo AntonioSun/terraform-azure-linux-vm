@@ -121,7 +121,7 @@ resource "azurerm_virtual_machine" "linux" {
 data "template_file" "wadcfg" {
   template = "${file("${path.module}/diagnostics/wadcfg.xml.tpl")}"
 
-  vars {
+  vars = {
     virtual_machine_id = "${azurerm_virtual_machine.linux.id}"
   }
 }
@@ -130,7 +130,7 @@ data "template_file" "wadcfg" {
 data "template_file" "settings" {
   template = "${file("${path.module}/diagnostics/settings2.3.json.tpl")}"
 
-  vars {
+  vars = {
     xml_cfg           = "${base64encode(data.template_file.wadcfg.rendered)}"
     diag_storage_name = "${var.diag_storage_name}"
   }
@@ -173,7 +173,7 @@ data "azurerm_storage_account_sas" "diagnostics" {
 data "template_file" "settings" {
   template = "${file("${path.module}/diagnostics/settings3.0.json.tpl")}"
 
-  vars {
+  vars = {
     diag_storage_name = "${var.diag_storage_name}"
     virtual_machine_id = "${azurerm_virtual_machine.linux.id}"
   }
@@ -183,7 +183,7 @@ data "template_file" "settings" {
 data "template_file" "protected_settings" {
   template = "${file("${path.module}/diagnostics/protected_settings2.3.json.tpl")}"
 
-  vars {
+  vars = {
     diag_storage_name               = "${var.diag_storage_name}"
     diag_storage_primary_access_key = "${var.diag_storage_primary_access_key}"
 
