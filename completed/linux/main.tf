@@ -201,7 +201,7 @@ resource "azurerm_virtual_machine_extension" "diagnostics" {
   type                       = "LinuxDiagnostic"
   type_handler_version       = "2.3"
   auto_upgrade_minor_version = true
-  depends_on                 = ["azurerm_virtual_machine.linux"]
+  depends_on                 = [azurerm_virtual_machine.linux]
 
   settings           = "${data.template_file.settings.rendered}"
   protected_settings = "${data.template_file.protected_settings.rendered}"

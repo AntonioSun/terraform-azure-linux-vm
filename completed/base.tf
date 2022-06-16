@@ -4,18 +4,18 @@ provider "azurerm" {
 }
 
 variable "ssh_key" {
-  type = "string"
+  type = string
 }
 
 # This is the primary username used to administer the machine
 variable "admin_username" {
-  type    = "string"
+  type    = string
   default = "azureuser"
 }
 
 # This is the secondary username used to administer services
 variable "paas_username" {
-  type    = "string"
+  type    = string
   default = "paas"
 }
 

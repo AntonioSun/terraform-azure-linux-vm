@@ -14,29 +14,29 @@ variable "paas_username" {
 }
 
 variable "cloud_config" {
-  type = "string"
+  type = string
 }
 
 variable "location" {
-  type = "string"
+  type = string
 }
 
 variable "resource_group_name" {
-  type = "string"
+  type = string
 }
 
 variable "availability_set_id" {
-  type = "string"
+  type = string
 }
 
 variable "subnet_id" {
-  type = "string"
+  type = string
 }
 
 variable "storage_type" {}
 
 variable "tags" {
-  type = "map"
+  type = map
 }
 
 variable "ssh_key" {}
