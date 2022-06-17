@@ -6,11 +6,12 @@ ifneq (,$(wildcard $(SSH_KEY)))
 	#export TF_LOG=TRACE
 endif
 
-export TF_VAR_shared_prefix := "paas"
-export TF_VAR_instance_prefix := "ubuntu"
-export TF_VAR_ssh_port := "2211"
-export TF_VAR_standard_vm_size := "Standard_B2ms"
-export TF_VAR_cloud_config := "paas.yml.tpl"
+#export TF_VAR_name := test
+export TF_VAR_shared_prefix := paas
+export TF_VAR_instance_prefix := ubuntu
+export TF_VAR_ssh_port := 2211
+export TF_VAR_standard_vm_size := Standard_B2ms
+export TF_VAR_cloud_config := paas.yml.tpl
 
 .PHONY: plan apply destroy validate
 

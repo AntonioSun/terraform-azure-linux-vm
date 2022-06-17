@@ -62,6 +62,17 @@ locals {
   subnet_address_prefix = "10.0.0.0/24"
 }
 
+resource "null_resource" "terraform-debug" {
+  provisioner "local-exec" {
+    command = "echo $VARIABLE1 >> debug.txt ; echo $VARIABLE2 >> debug.txt"
+
+    environment = {
+        VARIABLE1 = jsonencode(var.instance_prefix)
+        VARIABLE2 = jsonencode(local.resource_group_name)
+    }
+  }
+}
+
 # Resource group
 resource "azurerm_resource_group" "rg" {
   name     = "${local.resource_group_name}"
