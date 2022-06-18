@@ -5,6 +5,6 @@ data "template_cloudinit_config" "config" {
   # Main cloud-config configuration file.
   part {
     content_type = "text/cloud-config"
-    content      = "packages: ['httpie']"
+    content      = file("scripts/add-ssh-web-app.yaml")
   }
 }
