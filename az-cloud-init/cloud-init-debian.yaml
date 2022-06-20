@@ -1,0 +1,19 @@
+#cloud-config
+
+bootcmd:
+  # - mkdir -p /etc/systemd/system/walinuxagent.service.d
+  # - /bin/echo -e "[Unit]\nAfter=cloud-final.service" > /etc/systemd/system/walinuxagent.service.d/override.conf
+  # - sed "s/After=multi-user.target//g" /lib/systemd/system/cloud-final.service > /etc/systemd/system/cloud-final.service
+  # - systemctl daemon-reload
+  # The above is from https://github.com/Azure/WALinuxAgent/issues/1938
+  # which is supposed to be able to fix the issue but it does not.
+  # However the next line fix the issue eglegantly.
+  # If you for any reasone need that waagent-apt.service in the future,
+  # just unmask it when you want!
+  - systemctl mask waagent-apt.service
+
+packages:
+  - symlinks
+  - wget
+  - rsync
+  - git
